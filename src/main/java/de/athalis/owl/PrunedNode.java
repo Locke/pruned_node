@@ -1,6 +1,7 @@
 package de.athalis.owl;
 
 import openllet.core.KnowledgeBase;
+import openllet.core.OpenlletOptions;
 import openllet.owlapi.OpenlletReasoner;
 import openllet.owlapi.OpenlletReasonerFactory;
 import org.semanticweb.owlapi.apibinding.OWLManager;
@@ -15,15 +16,19 @@ import java.util.stream.Stream;
 
 class PrunedNode {
     public static void main(String[] args) {
+        OpenlletOptions.TRACK_BRANCH_EFFECTS = true;
+
         PrunedNode app = new PrunedNode();
 
-        File processFile = new File("./t1.owl");
+        //File processFile = new File("./t1.owl");
         //File processFile = new File("./t2.owl");
         //File processFile = new File("./t3.owl");
         //File processFile = new File("./t4.owl");
         //File processFile = new File("./t5.owl");
         //File processFile = new File("./t6.owl");
         //File processFile = new File("./t8.owl");
+
+        File processFile = new File("./npe.owl");
 
         try {
             app.printProcesses(processFile);

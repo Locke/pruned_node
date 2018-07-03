@@ -1,0 +1,369 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://main#"
+     xml:base="http://main"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:standard-pass-ont="http://www.i2pm.net/standard-pass-ont#">
+    <owl:Ontology rdf:about="http://main">
+        <owl:versionIRI rdf:resource="http://main_0.0"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://www.i2pm.net/standard-pass-ont#belongsTo -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.i2pm.net/standard-pass-ont#belongsTo">
+        <owl:inverseOf rdf:resource="http://www.i2pm.net/standard-pass-ont#contains"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.i2pm.net/standard-pass-ont#contains -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.i2pm.net/standard-pass-ont#contains"/>
+    
+
+
+    <!-- http://www.i2pm.net/standard-pass-ont#hasHandlingStrategy -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.i2pm.net/standard-pass-ont#hasHandlingStrategy"/>
+    
+
+
+    <!-- http://www.i2pm.net/standard-pass-ont#hasInputPoolConstraint -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.i2pm.net/standard-pass-ont#hasInputPoolConstraint">
+        <rdfs:subPropertyOf rdf:resource="http://www.i2pm.net/standard-pass-ont#hasRelationToModelComponent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.i2pm.net/standard-pass-ont#hasRelationToModelComponent -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.i2pm.net/standard-pass-ont#hasRelationToModelComponent">
+        <rdfs:domain rdf:resource="http://www.i2pm.net/standard-pass-ont#PASSProcessModelElement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#sameAs -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2002/07/owl#sameAs"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://www.i2pm.net/standard-pass-ont#hasModelComponentID -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.i2pm.net/standard-pass-ont#hasModelComponentID"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://www.i2pm.net/standard-pass-ont#FullySpecifiedSubject -->
+
+
+    <owl:Class rdf:about="http://www.i2pm.net/standard-pass-ont#FullySpecifiedSubject"/>
+    
+
+
+    <!-- http://www.i2pm.net/standard-pass-ont#InputPoolConstraint -->
+
+
+    <owl:Class rdf:about="http://www.i2pm.net/standard-pass-ont#InputPoolConstraint"/>
+    
+
+
+    <!-- http://www.i2pm.net/standard-pass-ont#PASSProcessModel -->
+
+
+    <owl:Class rdf:about="http://www.i2pm.net/standard-pass-ont#PASSProcessModel"/>
+    
+
+
+    <!-- http://www.i2pm.net/standard-pass-ont#PASSProcessModelElement -->
+
+
+    <owl:Class rdf:about="http://www.i2pm.net/standard-pass-ont#PASSProcessModelElement">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasModelComponentID"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://www.tk.informatik.tu-darmstadt.de/pass-restrictions#ASMExecutablePASSProcessModel -->
+
+
+    <owl:Class rdf:about="https://www.tk.informatik.tu-darmstadt.de/pass-restrictions#ASMExecutablePASSProcessModel"/>
+    
+
+
+    <!-- https://www.tk.informatik.tu-darmstadt.de/tud-pass-restrictions#ASMExecutablePASSProcessModel -->
+
+
+    <owl:Class rdf:about="https://www.tk.informatik.tu-darmstadt.de/tud-pass-restrictions#ASMExecutablePASSProcessModel">
+        <rdfs:subClassOf rdf:resource="http://www.i2pm.net/standard-pass-ont#PASSProcessModel"/>
+    </owl:Class>
+    
+
+
+    <!-- https://www.tk.informatik.tu-darmstadt.de/tud-pass-restrictions#ASMExecutableSubject -->
+
+
+    <owl:Class rdf:about="https://www.tk.informatik.tu-darmstadt.de/tud-pass-restrictions#ASMExecutableSubject">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.i2pm.net/standard-pass-ont#FullySpecifiedSubject"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasInputPoolConstraint"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.i2pm.net/standard-pass-ont#InputPoolConstraint"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.i2pm.net/standard-pass-ont#hasHandlingStrategy"/>
+                                        <owl:hasValue rdf:resource="http://www.i2pm.net/standard-pass-ont#InputPoolConstraintStrategy-Blocking"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://www.i2pm.net/standard-pass-ont#InputPoolConstraintStrategy-Blocking -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.i2pm.net/standard-pass-ont#InputPoolConstraintStrategy-Blocking"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#BlockingIPConstraint100 -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/07/owl#BlockingIPConstraint100"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#process283330911323073 -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/07/owl#process283330911323073">
+        <rdf:type rdf:resource="https://www.tk.informatik.tu-darmstadt.de/pass-restrictions#ASMExecutablePASSProcessModel"/>
+        <rdf:type rdf:resource="https://www.tk.informatik.tu-darmstadt.de/tud-pass-restrictions#ASMExecutablePASSProcessModel"/>
+        <standard-pass-ont:contains rdf:resource="http://www.w3.org/2002/07/owl#subject283330911323074"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#subject283330911323074 -->
+
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/07/owl#subject283330911323074">
+        <rdf:type rdf:resource="https://www.tk.informatik.tu-darmstadt.de/tud-pass-restrictions#ASMExecutableSubject"/>
+        <standard-pass-ont:hasInputPoolConstraint rdf:resource="http://www.w3.org/2002/07/owl#BlockingIPConstraint100"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    <rdf:Description rdf:about="urn:swrl#p">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#s1">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#s2">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#id">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.i2pm.net/standard-pass-ont#PASSProcessModel"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.i2pm.net/standard-pass-ont#FullySpecifiedSubject"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#s1"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="http://www.i2pm.net/standard-pass-ont#FullySpecifiedSubject"/>
+                                        <swrl:argument1 rdf:resource="urn:swrl#s2"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://www.i2pm.net/standard-pass-ont#belongsTo"/>
+                                                <swrl:argument1 rdf:resource="urn:swrl#s1"/>
+                                                <swrl:argument2 rdf:resource="urn:swrl#p"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="http://www.i2pm.net/standard-pass-ont#belongsTo"/>
+                                                        <swrl:argument1 rdf:resource="urn:swrl#s2"/>
+                                                        <swrl:argument2 rdf:resource="urn:swrl#p"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                                <swrl:propertyPredicate rdf:resource="http://www.i2pm.net/standard-pass-ont#hasModelComponentID"/>
+                                                                <swrl:argument1 rdf:resource="urn:swrl#s1"/>
+                                                                <swrl:argument2 rdf:resource="urn:swrl#id"/>
+                                                            </rdf:Description>
+                                                        </rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                                        <swrl:propertyPredicate rdf:resource="http://www.i2pm.net/standard-pass-ont#hasModelComponentID"/>
+                                                                        <swrl:argument1 rdf:resource="urn:swrl#s2"/>
+                                                                        <swrl:argument2 rdf:resource="urn:swrl#id"/>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
+                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#SameIndividualAtom"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#s1"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#s2"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 5.1.5) https://github.com/owlcs/owlapi/ -->
+
+
