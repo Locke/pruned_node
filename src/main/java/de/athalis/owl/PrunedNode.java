@@ -36,6 +36,8 @@ class PrunedNode {
         catch (final Exception e) {
             e.printStackTrace();
         }
+
+        System.exit(0);
     }
 
 
