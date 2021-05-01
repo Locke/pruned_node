@@ -65,9 +65,8 @@ class PrunedNode {
         OWLReasonerConfiguration config = new SimpleConfiguration(progressMonitor);
         OpenlletReasoner reasoner = OpenlletReasonerFactory.getInstance().createReasoner(ont, config);
 
+        long startTime = System.nanoTime();
         try {
-            long startTime = System.nanoTime();
-
             if (!reasoner.isConsistent()) {
                 throw new IllegalArgumentException("inconsistent process file!");
             }
@@ -96,6 +95,10 @@ class PrunedNode {
             Stream<OWLNamedIndividual> processes = reasoner.instances(CLASS_PROCESSMODEL);
 
             processes.forEach(System.out::println);
+        }
+        catch (Exception ex) {
+            System.out.println("Exception after " + (System.nanoTime() - startTime)/1e6 + " ms");
+            throw ex;
         }
         finally {
             reasoner.dispose();
