@@ -66,6 +66,8 @@ class PrunedNode {
         OpenlletReasoner reasoner = OpenlletReasonerFactory.getInstance().createReasoner(ont, config);
 
         try {
+            long startTime = System.nanoTime();
+
             if (!reasoner.isConsistent()) {
                 throw new IllegalArgumentException("inconsistent process file!");
             }
@@ -80,7 +82,7 @@ class PrunedNode {
             reasoner.flush();
 
             if (!reasoner.isConsistent()) {
-                throw new InternalError("inconsistent after adding a ModelID!");
+                throw new InternalError("inconsistent after adding a ModelID! took: " + (System.nanoTime() - startTime)/1e6 + " ms");
             }
 
             final KnowledgeBase kb = reasoner.getKB();
@@ -89,7 +91,7 @@ class PrunedNode {
 
             reasoner.precomputeInferences(InferenceType.CLASS_HIERARCHY);
 
-            System.out.println("precomputeInferences succeeded :)");
+            System.out.println("precomputeInferences succeeded :) took " + (System.nanoTime() - startTime)/1e6 + " ms");
 
             Stream<OWLNamedIndividual> processes = reasoner.instances(CLASS_PROCESSMODEL);
 
